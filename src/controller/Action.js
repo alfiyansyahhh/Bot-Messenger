@@ -9,6 +9,18 @@ const Action = {
   Main: async (context) => {
     // switch step
     switch (context.state.count) {
+      case 0:
+        var count = context.state.count + 1;
+        context.setState({
+          count,
+        });
+        // save to mysql
+        actionModel.insert(context.session);
+
+        // response chat
+        await context.sendText(`Hi, whats your name?`);
+        break;
+
       case 1:
         // state
         var nama = context.event.text;
@@ -92,7 +104,7 @@ const Action = {
         var bday = moment(context.state.bday).format('YYYY-MM-DD');
         var now = moment().format('YYYY-MM-DD');
         var chat = context.event.text;
-        var count = 1;
+        var count = context.state.count + 1;
         context.setState({
           know,
           count,
