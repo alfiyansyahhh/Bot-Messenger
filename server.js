@@ -2,6 +2,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { bottender } = require('bottender');
 
+const actionRouter = require('./src/router/action.router.js');
+
 const app = bottender({
   dev: process.env.NODE_ENV !== 'production',
 });
@@ -17,12 +19,16 @@ app.prepare().then(() => {
   const verify = (req, _, buf) => {
     req.rawBody = buf.toString();
   };
+
   server.use(bodyParser.json({ verify }));
   server.use(bodyParser.urlencoded({ extended: false, verify }));
 
-  // your custom route
-  server.get('/api', (req, res) => {
-    res.json({ ok: true });
+  //action router
+  server.use(actionRouter);
+
+  // default route
+  server.get('/', (req, res) => {
+    res.json({ succes: true });
   });
 
   // route for webhook request

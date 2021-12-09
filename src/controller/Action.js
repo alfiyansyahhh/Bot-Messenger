@@ -1,35 +1,27 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-redeclare */
 var moment = require('moment');
+const actionModel = require('../model/Action.model');
+const { success, failed } = require('../helpers/respon');
 
 const Action = {
   Main: async (context) => {
     // switch step
     switch (context.state.count) {
-      //   case 0:
-      //     // state
-      //     var nama = context.event.text;
-      //     var count = context.state.count + 1;
-      //     context.setState({
-      //       count,
-      //       nama,
-      //     });
-      //     // save to mongo
-
-      //     // response chat
-      //     await context.sendText(`Hello ${nama} it's your name?`);
-      //     break;
-      // state
-
       case 1:
         // state
         var nama = context.event.text;
         var count = context.state.count + 1;
+        var chat = context.event.text;
         context.setState({
           count,
           nama,
+          chat,
         });
-        // save to mongo
+
+        // save to mysql
+        actionModel.insert(context.session);
 
         // response chat
         await context.sendText(
@@ -42,11 +34,15 @@ const Action = {
         var now = moment();
         var bday = context.event.text;
         var count = context.state.count + 1;
+        var chat = context.event.text;
         context.setState({
           count,
           bday,
+          chat,
         });
-        // save to mongo
+        // save to mysql
+
+        actionModel.insert(context.session);
 
         // calculate day differences
         bday = moment(bday, 'YYYY-MM-DD', true);
@@ -90,20 +86,20 @@ const Action = {
         var know;
         if (context.event.isPayload) {
           know = context.event.payload;
-          console.log(context.event, 'ini event');
-          console.log(context.event.payload, 'ini payload');
-          console.log(know, 'ini know');
         } else {
           know = context.event.text;
         }
         var bday = moment(context.state.bday).format('YYYY-MM-DD');
         var now = moment().format('YYYY-MM-DD');
+        var chat = context.event.text;
         var count = 1;
         context.setState({
           know,
           count,
+          chat,
         });
-        // save to mongo
+        // save to mysql
+        actionModel.insert(context.session);
 
         // calculate how many days till next birthday
         bdayNow = bday.split('-');
@@ -131,6 +127,50 @@ const Action = {
           await context.sendText(`Ok then. Good bye ~`);
           break;
         }
+    }
+  },
+  GetAll: (req, res) => {
+    try {
+      actionModel
+        .getAllMessage()
+        .then((result) => {
+          success(res, result, 'succes');
+        })
+        .catch((err) => {
+          failed(res, 500, err);
+        });
+    } catch (error) {
+      failed(res, 401, error);
+    }
+  },
+  GetMsgUser: (req, res) => {
+    const { id } = req.params;
+    try {
+      actionModel
+        .getUserMessage(id)
+        .then((result) => {
+          success(res, result, 'succes');
+        })
+        .catch((err) => {
+          failed(res, 500, err);
+        });
+    } catch (error) {
+      failed(res, 401, error);
+    }
+  },
+  DeleteMsg: (req, res) => {
+    try {
+      const { id } = req.params;
+      actionModel
+        .deleteMsg(id)
+        .then((result) => {
+          success(res, result, 'succes');
+        })
+        .catch((err) => {
+          failed(res, 500, err);
+        });
+    } catch (error) {
+      failed(res, 401, error);
     }
   },
 };
