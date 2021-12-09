@@ -2,10 +2,8 @@
 /* eslint-disable no-redeclare */
 var moment = require('moment');
 
-module.exports = {
-  // #################### Action Main: ask for name & birthday ####################
-
-  Main: async function (context) {
+const Action = {
+  Main: async (context) => {
     // switch step
     switch (context.state.count) {
       //   case 0:
@@ -63,12 +61,12 @@ module.exports = {
               quickReplies: [
                 {
                   contentType: 'text',
-                  title: '✅ Yes',
+                  title: 'Yes',
                   payload: 'BIRTHDAY_YES',
                 },
                 {
                   contentType: 'text',
-                  title: '⛔ No',
+                  title: 'No',
                   payload: 'BIRTHDAY_NO',
                 },
               ],
@@ -91,7 +89,7 @@ module.exports = {
         // state
         var know;
         if (context.event.isPayload) {
-          know = context.event.payload.split('_')[1];
+          know = context.event.payload;
           console.log(context.event, 'ini event');
           console.log(context.event.payload, 'ini payload');
           console.log(know, 'ini know');
@@ -136,3 +134,5 @@ module.exports = {
     }
   },
 };
+
+module.exports = Action;
