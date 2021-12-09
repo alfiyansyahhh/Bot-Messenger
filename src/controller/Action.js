@@ -58,12 +58,12 @@ const Action = {
                 {
                   contentType: 'text',
                   title: 'Yes',
-                  payload: 'BIRTHDAY_YES',
+                  payload: 'YES',
                 },
                 {
                   contentType: 'text',
                   title: 'No',
-                  payload: 'BIRTHDAY_NO',
+                  payload: 'NO',
                 },
               ],
             }
@@ -124,6 +124,9 @@ const Action = {
           );
           break;
         } else {
+          context.setState({
+            count: 1,
+          });
           await context.sendText(`Ok then. Good bye ~`);
           break;
         }
@@ -133,10 +136,12 @@ const Action = {
         var chat = context.event.text;
         context.setState({
           count,
-          nama,
           chat,
         });
         if (context.event.text.toUpperCase().startsWith('o')) {
+          context.setState({
+            count: 1,
+          });
           await context.sendText(`Ok then. Good bye ~`);
           break;
         } else {
