@@ -144,20 +144,20 @@ const Action = {
         }
 
       case 4:
-        var count = 1;
+        var count = 0;
         var chat = context.event.text;
         context.setState({
           count,
           chat,
         });
-        if (context.event.text.toUpperCase().startsWith('o')) {
+        if (chat.toUpperCase().startsWith('o')) {
           context.setState({
-            count: 1,
+            count: 0,
           });
           await context.sendText(`Ok then. Good bye ~`);
           break;
         } else {
-          await context.sendText(`sorry i dont understein`);
+          await context.sendText(`sorry i dont understein, auto reset`);
           break;
         }
     }
