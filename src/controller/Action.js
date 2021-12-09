@@ -150,16 +150,12 @@ const Action = {
           count,
           chat,
         });
-        if (chat.toUpperCase().startsWith('O')) {
-          context.setState({
-            count: 0,
-          });
-          await context.sendText(`Ok then. Good bye ~`);
-          break;
-        } else {
-          await context.sendText(`sorry i dont understein, auto reset`);
-          break;
-        }
+
+        context.setState({
+          count: 0,
+        });
+        await context.sendText(`Ok then. Good bye ~ auto reset`);
+        break;
     }
   },
   GetAll: (req, res) => {
