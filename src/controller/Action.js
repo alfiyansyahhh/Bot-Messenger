@@ -127,6 +127,22 @@ const Action = {
           await context.sendText(`Ok then. Good bye ~`);
           break;
         }
+
+      case 4:
+        var count = 1;
+        var chat = context.event.text;
+        context.setState({
+          count,
+          nama,
+          chat,
+        });
+        if (context.event.text.toUpperCase().startsWith('o')) {
+          await context.sendText(`Ok then. Good bye ~`);
+          break;
+        } else {
+          await context.sendText(`sorry i dont understein`);
+          break;
+        }
     }
   },
   GetAll: (req, res) => {
