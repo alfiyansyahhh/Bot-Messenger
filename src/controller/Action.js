@@ -150,7 +150,7 @@ const Action = {
           count,
           chat,
         });
-        if (chat.toUpperCase().startsWith('o')) {
+        if (chat.toUpperCase().startsWith('O')) {
           context.setState({
             count: 0,
           });
