@@ -1,6 +1,6 @@
 const { router, text } = require('bottender/router');
 const { Hello } = require('./controller/Hi');
-const { Action } = require('./controller/Action');
+const Action = require('./controller/Action');
 
 module.exports = async function App() {
   return router([
