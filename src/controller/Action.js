@@ -137,7 +137,7 @@ const Action = {
           break;
         } else {
           context.setState({
-            count: 1,
+            count: 0,
           });
           await context.sendText(`Ok then. Good bye ~`);
           break;
