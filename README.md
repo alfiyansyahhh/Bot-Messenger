@@ -3,9 +3,9 @@
 [Demo](http://m.me/botTester421)
 
 
-yes|no|
+no|yes|
 :---------:|:---------:|
-|![](https://i.postimg.cc/m2KN33Ws/2021-12-10-02-37.png)|![](https://i.postimg.cc/8zWdZFTr/2021-12-10-02-38.png)|
+|![](https://i.postimg.cc/j2cPJ9Yx/123.png)|![](https://i.postimg.cc/8zWdZFTr/2021-12-10-02-38.png)|
 
 
 ## Configuration
