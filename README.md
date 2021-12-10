@@ -3,6 +3,11 @@
 [Demo](http://m.me/botTester421)
 
 
+yes|no|
+:---------:|:---------:|
+|![](https://i.postimg.cc/m2KN33Ws/2021-12-10-02-37.png)|![](https://i.postimg.cc/8zWdZFTr/2021-12-10-02-38.png)|
+
+
 ## Configuration
 
 ### The `bottender.config.js` File
