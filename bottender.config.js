@@ -21,7 +21,7 @@ module.exports = {
     },
   },
   initialState: {
-    count: 1,
+    count: 0,
     nama: '',
     bday: '',
     know: '',
