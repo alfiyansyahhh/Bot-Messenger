@@ -8,19 +8,21 @@
     "dev1": "bottender dev",
     "start1": "bottender start",
     "lint": "eslint . ",
-    "test": "jest"
+    "test": "mocha",
+    "coverage": "nyc --reporter=html mocha"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "bottender": "1.5.5",
+    "chai": "^4.3.4",
     "eslint": "8.4.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "express": "^4.17.1",
     "jest": "27.4.3",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.15",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
     "prettier": "2.5.1"
   }
 }
