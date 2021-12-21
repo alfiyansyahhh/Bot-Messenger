@@ -69,7 +69,7 @@ gif|screenshoot|
    DATABASE_NAME=
    ```
    
-   ToGet Messenger PAGE ID dll. you can Read [this](https://bottender.js.org/docs/channel-messenger-setup)
+   To Get Messenger PAGE ID dll. you can Read [this](https://bottender.js.org/docs/channel-messenger-setup)
    
    To Get databases [here](https://github.com/alfiyansyahhh/Bot-Messenger/blob/master/file/bot.sql)
    
