@@ -8,8 +8,7 @@
     "dev1": "bottender dev",
     "start1": "bottender start",
     "lint": "eslint . ",
-    "test": "mocha",
-    "coverage": "nyc --reporter=html mocha"
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
